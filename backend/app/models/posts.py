@@ -11,11 +11,11 @@ class Posts(Base):
     name = Column(String, nullable=False, index=True)
     tags_id = Column(Integer, ForeignKey("tags.id"), nullable=False)
     description = Column(Text)
-    content = Column(Text, nullable=False, index=True)
+    content = Column(Text)
     image_url = Column(String, nullable=False, index=True)
     create_at = Column(DateTime, default=datetime.utcnow)
 
-    category = relationship("Tags", back_populates="posts")
+    tags = relationship("Tags", back_populates="posts")
 
     def __repr__(self):
         return f"<Posts(id={self.id}, name='{self.name}', description='{self.description}')>"
