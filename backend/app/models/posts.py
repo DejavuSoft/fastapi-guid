@@ -13,7 +13,7 @@ class Posts(Base):
     description = Column(Text)
     content = Column(Text)
     image_url = Column(String, index=True)
-    create_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     tags = relationship("Tags", back_populates="posts")
 

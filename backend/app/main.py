@@ -4,7 +4,6 @@ from fastapi.staticfiles import StaticFiles
 from .config import settings
 from .database import init_db
 from .routes import posts_router, tags_router
-from pydantic import BaseModel
 
 from pathlib import Path
 from os import path, mkdir

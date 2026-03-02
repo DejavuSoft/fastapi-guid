@@ -4,9 +4,9 @@ from typing  import Optional
 from .tags import TagsResponse
 
 class PostsBase(BaseModel):
-    name: str = Field(..., min_length=5, max_length=200, description="Posts name")
-    description: Optional[str] = Field(None, min_length=5, max_length=200, description="Description posts")
-    content: Optional[str] = Field(None, min_length=200, max_length=3000, description="Content posts")
+    name: str = Field(..., max_length=200, description="Posts name")
+    description: Optional[str] = Field(None, max_length=200, description="Description posts")
+    content: Optional[str] = Field(None, max_length=3000, description="Content posts")
     tags_id: int = Field(..., description="Tags ID")
     image_url: Optional[str] = Field(None, description="Posts image URL")
 
@@ -20,7 +20,7 @@ class PostsResponse(BaseModel):
     content: Optional[str]
     tags_id: int
     image_url: Optional[str]
-    create_at: datetime
+    created_at: datetime | None = None
     tags: TagsResponse = Field(..., description="Posts tags")
 
     model_config = ConfigDict(from_attributes=True)
