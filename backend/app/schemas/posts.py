@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
 from typing  import Optional
 from .tags import TagsResponse
@@ -23,8 +23,7 @@ class PostsResponse(BaseModel):
     create_at: datetime
     tags: TagsResponse = Field(..., description="Posts tags")
 
-    class Config:
-        form_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class PostsListResponse(BaseModel):
     posts: list[PostsResponse]

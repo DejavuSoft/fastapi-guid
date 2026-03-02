@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 class TagsBase(BaseModel):
     name: str = Field(..., min_length=5, max_length=100, description="Tags name")
@@ -10,5 +10,4 @@ class TagsCreate(TagsBase):
 class TagsResponse(TagsBase):
     id: int = Field(..., description="Unique tags ID")
 
-    class Config:
-        form_attributes = True
+    model_config = ConfigDict(from_attributes=True)

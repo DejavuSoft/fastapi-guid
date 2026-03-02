@@ -13,7 +13,7 @@ router = APIRouter(
 @router.get("", response_model=PostsListResponse, status_code=status.HTTP_200_OK)
 def get_posts(db: Session = Depends(get_db)):
     service = PostsService(db)
-    return service.get_all_tags()
+    return service.get_all_posts()
 
 @router.get("/{posts_id}", response_model=PostsResponse, status_code=status.HTTP_200_OK)
 def get_posts_id(posts_id: int, db: Session = Depends(get_db)):
