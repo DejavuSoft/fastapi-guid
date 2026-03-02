@@ -12,7 +12,7 @@ class Posts(Base):
     tags_id = Column(Integer, ForeignKey("tags.id"), nullable=False)
     description = Column(Text)
     content = Column(Text)
-    image_url = Column(String, nullable=False, index=True)
+    image_url = Column(String, index=True)
     create_at = Column(DateTime, default=datetime.utcnow)
 
     tags = relationship("Tags", back_populates="posts")
