@@ -26,6 +26,6 @@ class PostsResponse(BaseModel):
     class Config:
         form_attributes = True
 
-class PostsListRespons(BaseModel):
+class PostsListResponse(BaseModel):
     posts: list[PostsResponse]
     total: int = Field(..., description="Total number of totals posts")

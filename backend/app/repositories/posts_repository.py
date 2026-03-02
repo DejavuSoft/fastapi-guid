@@ -3,7 +3,7 @@ from typing import List, Optional
 from ..models.posts import Posts
 from ..schemas.posts import PostsCreate
 
-class TagsRepository:
+class PostsRepository:
     def __init__(self, db: Session):
         self.db = db
 

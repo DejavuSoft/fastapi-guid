@@ -11,3 +11,13 @@ class TagsService:
     def get_all_tags(self) -> List[TagsResponse]:
         tags = self.repository.get_all()
         return [TagsResponse.model_validate(tag) for tag in tags]
+    
+    def get_tags_by_id(self, tags_id: int) -> TagsResponse:
+        tags = self.repository.get_by_id(tags_id)
+        if not tags:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Tags with id {tags_id} not found")
+        return TagsResponse.model_validate(tags)
+    
+    def create_tags(self, tags_data: TagsCreate) -> TagsResponse:
+        tags = self.repository.create(tags_data)
+        return TagsResponse.model_validate(tags)
