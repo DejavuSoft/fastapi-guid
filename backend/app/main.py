@@ -5,11 +5,7 @@ from .config import settings
 from .database import init_db
 from .routes import posts_router, tags_router
 
-from pathlib import Path
 from os import path, mkdir
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-FRONTEND_DIR = BASE_DIR / "frontend"
 
 app = FastAPI(
     title=settings.app_name,
@@ -50,6 +46,3 @@ def root():
 @app.get('/health')
 def health_check():
     return {'status': 'OK'}
-
-# if __name__ == "__main__":
-#     subprocess.Popen(["npm", "run", "dev"], cwd=str(FRONTEND_DIR), shell=True)
